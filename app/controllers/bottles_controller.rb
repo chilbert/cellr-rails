@@ -1,17 +1,27 @@
 class BottlesController < ApplicationController
 
+  def index
+      @bottles = Bottle.all
+  end
+
   def new
     @bottle = Bottle.new
   end
 
   def create
     @bottle = Bottle.new(bottle_params)
+    if @bottle.save
+      flash[:success] = "Bottle added to Cellr successfully"
+      redirect_to @bottle
+    else
+      render 'new'
+    end
   end
 
   def update
     if @bottle.update_attributes(bottle_params)
       flash[:success] = "Bottle updated"
-      redirect_to @bottle
+      redirect_to bottle_path(@bottle)
     else
       render 'edit'
     end
