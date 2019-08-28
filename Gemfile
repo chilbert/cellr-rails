@@ -36,6 +36,8 @@ gem "bootstrap_form", ">= 4.2.0"
 
 gem 'dotenv-rails'
 
+gem 'pg'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
