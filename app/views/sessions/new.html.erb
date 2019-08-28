@@ -4,6 +4,6 @@
     <%= f.email_field :email %>
     <%= f.password_field :password %>
     <%= f.submit "Log In" %>
-    Or <a href="/signup>"><button type="btn btn-outline-secondary" name="button">Sign Up</button></a>
   <% end %>
+  <p>New user? <%= link_to "Sign up now!", signup_path %></p>
 </div>
