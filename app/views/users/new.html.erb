@@ -1,1 +1,13 @@
-<h1>Sign Up for Cellr.</h1>
+<div class="container">
+
+
+<h1 class="mt-5 mb-5">Sign Up for Cellr.</h1>
+
+<%= form_for :user, url: '/users' do |f| %>
+  Username: <%= f.text_field :username %><br>
+  Password: <%= f.password_field :password %><br>
+  Password Confirmation: <%= f.password_field :password_confirmation %><br>
+  <%= f.submit "Submit" %>
+<% end %>
+
+</div>
