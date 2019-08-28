@@ -10,16 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_27_003602) do
+ActiveRecord::Schema.define(version: 2019_08_28_040937) do
 
   create_table "bottles", force: :cascade do |t|
     t.string "title"
     t.string "type"
     t.string "grape_variety"
     t.integer "vintage"
-    t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "bottles_users", id: false, force: :cascade do |t|
+    t.integer "bottle_id", null: false
+    t.integer "user_id", null: false
+    t.decimal "price"
+    t.index ["user_id", "bottle_id"], name: "index_bottles_users_on_user_id_and_bottle_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -35,6 +41,13 @@ ActiveRecord::Schema.define(version: 2019_08_27_003602) do
     t.string "email"
     t.string "password_digest"
     t.string "password_confirmation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "wineries", force: :cascade do |t|
+    t.string "name"
+    t.integer "bottle_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
