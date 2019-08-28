@@ -1,15 +1,6 @@
+<% provide(:button_text, 'Create Account') %>
 <div class="container">
 
-
 <h1 class="mt-5 mb-5">Sign Up for Cellr.</h1>
-
-<%= bootstrap_form_for :user, url: '/users' do |f| %>
-  <%= render 'shared/error_messages' %>
-  <%= f.text_field :name, class: 'form-control' %>
-  <%= f.email_field :email, class: 'form-control' %>
-  <%= f.password_field :password, class: 'form-control' %>
-  <%= f.password_field :password_confirmation, class: 'form-control' %>
-  <%= f.submit "Sign Up" %> Or <button type="button" class="btn btn-link">Login</button>
-<% end %>
-
+  <%= render 'form' %>
 </div>
