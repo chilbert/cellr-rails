@@ -1,10 +1,9 @@
-<%= form_for @user, url: login_path, method: :post do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.submit "log in" %>
-  Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
-<% end %>
+<div class="container">
+  <h3 class="mb-3 mt-3">Login to your Cellr.</h3>
+  <%= bootstrap_form_for :user, url: login_path, method: :post do |f| %>
+    <%= f.email_field :email %>
+    <%= f.password_field :password %>
+    <%= f.submit "Log In" %>
+    Or <a href="/signup>"><button type="btn btn-outline-secondary" name="button">Sign Up</button></a>
+  <% end %>
+</div>
