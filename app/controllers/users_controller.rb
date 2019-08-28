@@ -13,18 +13,6 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
-
-
-
-
-    user = User.find_by(params[:email])
-    binding.pry
-    if !user.present?
-
-      redirect_to user_path(@user.id)
-    else
-      flash.now[:alert] = 'This email is already in use. Login now.'
-    end
   end
 
   def show
