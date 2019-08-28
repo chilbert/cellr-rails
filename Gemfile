@@ -28,10 +28,13 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'omniauth', '~> 1.3', '>= 1.3.1'
+gem 'omniauth-facebook'
 
 gem 'thin'
 
 gem "bootstrap_form", ">= 4.2.0"
+
+gem 'dotenv-rails'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
