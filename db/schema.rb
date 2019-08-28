@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_163050) do
+ActiveRecord::Schema.define(version: 2019_08_28_193736) do
+
+  create_table "bottle_price", id: false, force: :cascade do |t|
+    t.integer "bottle_id", null: false
+    t.integer "user_id", null: false
+    t.decimal "price"
+    t.index ["user_id", "bottle_id"], name: "index_bottle_price_on_user_id_and_bottle_id"
+  end
 
   create_table "bottles", force: :cascade do |t|
     t.string "title"
@@ -19,13 +26,6 @@ ActiveRecord::Schema.define(version: 2019_08_28_163050) do
     t.integer "vintage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "bottles_users", id: false, force: :cascade do |t|
-    t.integer "bottle_id", null: false
-    t.integer "user_id", null: false
-    t.decimal "price"
-    t.index ["user_id", "bottle_id"], name: "index_bottles_users_on_user_id_and_bottle_id"
   end
 
   create_table "comments", force: :cascade do |t|
