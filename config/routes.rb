@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+
   resources :users do
-    resources :wineries do
-      resources :bottles, only: [:new, :create, :edit, :update, :destroy]
-    end
+      resources :bottles do
+        resources :comments
+      end
   end
 
-  resources :comments
+  resources :wineries
 
 
   get 'sessions/new'

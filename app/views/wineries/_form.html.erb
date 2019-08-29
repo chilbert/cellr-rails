@@ -1,0 +1,19 @@
+<%= form_for [user, winery] do |f| %>
+  <%= f.label :title, 'Class Title' %></br>
+  <%= f.text_field :title %></br>
+
+  <%= f.label :lesson_type, 'Type of Class' %></br>
+  <%= f.select :lesson_type, lesson_type_arr, :prompt => 'Select Class Type' %><br>
+
+  <%= f.label :playlist %></br>
+  <%= f.text_field :playlist %></br>
+
+  <%= f.fields_for :poses do |i| %>
+    <%= i.label :name, 'Pose' %></br>
+    <%= i.text_field :name %></br>
+  <% end %>
+
+  <%= hidden_field_tag 'lesson[teacher_id]', params[:teacher_id] %>
+
+  <%= f.submit %>
+<% end %>

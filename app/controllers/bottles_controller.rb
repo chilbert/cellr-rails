@@ -6,6 +6,7 @@ class BottlesController < ApplicationController
 
   def new
     @bottle = Bottle.new
+    @wineries = Winery.all
   end
 
   def create
@@ -34,7 +35,7 @@ class BottlesController < ApplicationController
   private
 
   def bottle_params
-    params.require(:bottle).permit(:title, :type, :grape_variety, :vintage)
+    params.require(:bottle).permit(:title, :type, :grape_variety, :vintage, :winery_id, :price)
   end
 
 end

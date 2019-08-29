@@ -1,0 +1,14 @@
+<% if @winery.errors %>
+    <% @winery.errors.full_messages.each do |error| %>
+      <%= content_tag(:p, error) %>
+    <% end %>
+<% end %>
+
+<div class="container">
+  <h1> Add a new Winery to your Cellr. </h1>
+
+  <%= bootstrap_form_for @winery do |w| %>
+  <%= w.text_field :name %>
+  <%= w.submit "Add Winery" %>
+  <% end %>
+</div>

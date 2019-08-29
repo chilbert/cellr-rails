@@ -1,0 +1,17 @@
+<div class="container">
+  <h3>Add a new comment to (bottlename)</h3>
+
+  <%= bootstrap_form_for(@bottle) do |b| %>
+  <%= b.text_field :title, class: 'form-control' %>
+  <%= b.text_field :type, class: 'form-control' %>
+  <%= b.text_field :grape_variety, class: 'form-control' %>
+  <%= b.text_field :vintage, class: 'form-control' %>
+  <%= b.text_field :winery_id, class: 'form-control' %>
+  <%= b.text_field :price, class: 'form-control' %>
+  <%= b.submit 'Add Bottle', class: "btn btn-secondary" %>
+
+  <% end %>
+
+  <%= link_to 'View all bottles', user_bottles_path(current_user.id) %>
+
+</div>
