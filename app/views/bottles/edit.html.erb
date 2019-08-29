@@ -1,0 +1,11 @@
+<div class="container">
+  <% if @bottle.errors %>
+    <% @bottle.errors.full_messages.each do |error| %>
+      <%= content_tag(:p, error) %>
+    <% end %>
+<% end %>
+
+  <h3>Edit your bottle.</h3>
+  <%= render 'form' %>
+
+</div>

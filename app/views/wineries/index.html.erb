@@ -1,13 +1,14 @@
 <div class="container">
   <h1>Viewing all Wineries in your collection</h1>
-  <div class="card">
-    <div class="card-body">
       <% @wineries.each do |w| %>
+      <div class="card mt-5">
+        <div class="card-body">
         <h3><%= w.name %></h3>
         <p>You have (bottle_count) of bottles from this Winery</p>
         <p>Your collection from this winery is worth (total_price_from_winery)</p>
         <%= link_to "Add a bottle from #{w.name}", new_user_bottle_path(current_user), class: "btn btn-secondary" %>
-      <% end %>
+
     </div>
   </div>
+  <% end %>
 </div>

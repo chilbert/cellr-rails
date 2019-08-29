@@ -1,0 +1,10 @@
+<%= bootstrap_form_for @bottle, url: user_bottles_path(current_user.id) do |b| %>
+<%= b.text_field :title, class: 'form-control' %>
+<%= b.select :wine_type, [['White', 1], ['Red', 2], ['Sparkling', 3], ['Rose', 4]], { class: 'form-control' } %>
+<%= b.select :grape_variety, [['Sauvignon Blanc', 1], ['Cabernet Franc', 2], ['Sangiovese', 3], ['Nebbiolo', 4], ['Chenin Blanc', 5], ['Riesling', 6], ['Merlot', 7], ['Cabernet Sauvignon', 8], ['Pinot Noir', 9], ['Chardonnay', 10], ['Gamay', 11], ['Other', 12], ['Tempranillo', 13], ['Grenache', 14], ['Syrah', 15]], { class: "form-control" } %>
+<%= b.text_field :vintage, class: 'form-control' %>
+<%= b.collection_select :winery_id, Winery.all, :id, :name, { class: 'form-control' } %>
+<%= b.text_field :price, class: 'form-control' %>
+<%= b.submit 'Add Bottle', class: "btn btn-secondary" %>
+
+<% end %>
