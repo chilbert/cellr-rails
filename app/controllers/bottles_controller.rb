@@ -1,5 +1,8 @@
 class BottlesController < ApplicationController
 
+  before_action :set_game_session, only: [:show, :new, :create]
+  
+
   def index
       @bottles = Bottle.all
   end
