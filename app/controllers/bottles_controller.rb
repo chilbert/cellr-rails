@@ -1,8 +1,5 @@
 class BottlesController < ApplicationController
 
-  before_action :set_game_session, only: [:show, :new, :create]
-  
-
   def index
       @bottles = Bottle.all
   end
@@ -11,28 +8,35 @@ class BottlesController < ApplicationController
     @bottle = Bottle.new
   end
 
+  def show
+    @bottle = Bottle.find_by(params[:id])
+  end
+
   def create
     @bottle = Bottle.new(bottle_params)
     if @bottle.save
       flash[:success] = "Bottle added to Cellr successfully"
-      redirect_to user_path(current_user.id)
+      redirect_to user_bottles_path(current_user.id)
     else
       render 'new'
-    end
-  end
-
-  def update
-    if @bottle.update_attributes(bottle_params)
-      flash[:success] = "Bottle updated"
-      redirect_to bottle_path(@bottle)
-    else
-      render 'edit'
     end
   end
 
   def edit
     @bottle = Bottle.find(params[:id])
   end
+
+  def update
+    @bottle = Bottle.find(params[:id])
+    if @bottle.update(bottle_params)
+      flash[:success] = "Bottle updated successfully"
+      redirect_to user_bottles_path(current_user.id)
+    else
+      render :edit
+    end
+  end
+
+
 
   private
 

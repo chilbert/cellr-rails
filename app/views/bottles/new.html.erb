@@ -1,3 +1,4 @@
+<% provide(:button_text, 'Add Bottle') %>
 <div class="container">
   <% if @bottle.errors %>
     <% @bottle.errors.full_messages.each do |error| %>
@@ -7,7 +8,18 @@
 
   <h3 class="mt-3">Add a new bottle to your Cellr.</h3>
 
-  <%= render 'form' %><br>
+  <%= bootstrap_form_for @bottle, url: user_bottles_path(current_user.id) do |b| %>
+  <%= b.text_field :title, class: 'form-control' %>
+  <%= b.select :wine_type, [['White'], ['Red'], ['Sparkling'], ['Rose']], { class: 'form-control' } %>
+  <%= b.select :grape_variety, [['Sauvignon Blanc'], ['Cabernet Franc'], ['Sangiovese'], ['Nebbiolo'], ['Chenin Blanc'], ['Riesling'], ['Merlot'], ['Cabernet Sauvignon'], ['Pinot Noir'], ['Chardonnay'], ['Gamay'], ['Other'], ['Tempranillo'], ['Grenache'], ['Syrah']], { class: "form-control" } %>
+  <%= b.text_field :vintage, class: 'form-control' %>
+  <%= b.collection_select :winery_id, Winery.all, :id, :name, { class: 'form-control' } %>
+  <%= b.text_field :price, class: 'form-control' %>
+
+  <%= b.submit yield(:button_text), class: "btn btn-secondary" %>
+
+  <% end %>
+
   <%= link_to 'View all bottles', user_bottles_path(current_user.id) %>
 
 </div>

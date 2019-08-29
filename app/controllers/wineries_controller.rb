@@ -17,6 +17,7 @@ class WineriesController < ApplicationController
       redirect_to wineries_path
     else
       render :new
+    end
   end
 
   def edit
@@ -32,6 +33,7 @@ class WineriesController < ApplicationController
       redirect_to @winery
     else
       render :edit
+    end
   end
 
   private

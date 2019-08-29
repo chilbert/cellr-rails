@@ -20,17 +20,11 @@ class CommentsController < ApplicationController
     end
   end
 
-
-
-
-
-
-
   private
 
   def set_comment
     @comment = Comment.find_by(id: params[:id]) || Comment.new
-    # @bottle = Bottle.find_by(id: params[:bottle_id])
+    @bottle = Bottle.find_by(id: params[:bottle_id])
     @user = User.find_by(id: session[:user_id])
   end
 
