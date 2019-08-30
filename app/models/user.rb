@@ -18,6 +18,15 @@ class User < ApplicationRecord
     return value
   end
 
+  def vintage_average
+    bottles = BottlePrice.where(user_id: self.id)
+    value = 0
+    bottles.each do |c|
+      value += c.bottle.vintage
+    end
+    return value/bottles.count
+  end
+
   def total_wineries
     self.bottles.distinct.count('winery_id')
   end
