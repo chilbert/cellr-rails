@@ -15,6 +15,13 @@ class BottlePricesController < ApplicationController
     redirect_to user_bottles_path
   end
 
+  def destroy
+    @bottle = BottlePrice.find(params[:id])
+    @bottle.destroy
+    flash[:danger] = "Bottle Removed - Hope it was good!"
+    redirect_to user_bottles_path
+  end
+
   private
 
 

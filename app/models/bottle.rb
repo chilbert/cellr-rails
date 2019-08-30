@@ -7,6 +7,5 @@ class Bottle < ApplicationRecord
 
   validates :vintage, length: { is: 4 }
 
-  scope :bottle_prices, -> { joins(:bottles).where('washing_instructions.dry_clean_only = ?', true) }
 
 end

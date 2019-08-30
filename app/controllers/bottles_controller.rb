@@ -5,7 +5,6 @@ class BottlesController < ApplicationController
   def index
     if params[:user_id]
       @bottles = User.find(params[:user_id]).bottles
-      binding.pry
       render "userindex"
     else
       @bottles = Bottle.all
