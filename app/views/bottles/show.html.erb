@@ -7,30 +7,7 @@
     <p>Variety: <%= @bottle.grape_variety %></p>
     <p>Vintage: <%= @bottle.vintage %></p>
     <p>Winery: <%= @bottle.winery.name %></p>
-    <p>Price: $<%= @bottle.price %></p>
   </div>
 </div>
-
-<h4 class="mt-3">Comments:</h4>
-<ul>
-  <% @bottle.comments.each do |c| %>
-  <li>
-  <h5><%= c.title %></h5>
-  <p><%= c.comment %></p>
-</li>
-<% end %>
-</ul>
-<hr>
-
-<h4 class="mt-2">Add a new comment:</h4>
-
-
-  <%= bootstrap_form_for @comment, url: user_bottle_comments_path(user_id: current_user.id, bottle_id: @bottle.id, comment_id: @comment.id) do |c| %>
-  <%= c.text_field :title %>
-  <%= c.text_area :comment %>
-  <%= c.submit "Add Comment", method: :post %>
-  <% end %>
-
-
 
 </div>

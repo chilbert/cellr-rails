@@ -1,6 +1,8 @@
-class CommentsController < ApplicationController
+class BottlePriceController < ApplicationController
+  before_action :logged_in_user
 
   def create
+
     @comment = Comment.new(comment_params)
     @comment.user_id = params[:user_id]
     @comment.bottle_id = params[:bottle_id]

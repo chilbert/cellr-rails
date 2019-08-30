@@ -22,4 +22,15 @@ class User < ApplicationRecord
     end
   end
 
+
+  
+
+  def total_bottle_count
+    self.bottles.count
+  end
+
+  def total_wineries
+    self.bottles.distinct.count('winery_id')
+  end
+
 end

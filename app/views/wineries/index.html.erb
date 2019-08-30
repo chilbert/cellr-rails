@@ -1,14 +1,12 @@
 <div class="container">
-  <h1 class="mt-3">Viewing all Wineries in your collection</h1>
+  <h1 class="mt-3">Viewing all Wineries in Cellr</h1>
       <% @wineries.each do |w| %>
       <div class="card mt-5">
         <div class="card-body">
         <h3><%= w.name %></h3>
-        <p>You have (bottle_count) of bottles from this Winery</p>
-        <p>Your collection from this winery is worth (total_price_from_winery)</p>
-        <%= link_to "Add a bottle from #{w.name}", new_user_bottle_path(current_user), class: "btn btn-secondary" %>
-
+        <%= link_to "Add a bottle from #{w.name}", new_user_bottle_path(current_user), class: "btn btn-secondary" %><br>
     </div>
   </div>
-  <% end %>
+  <% end %><br>
+  <%= link_to "Add a new winery", new_winery_path, class: "btn btn-primary" %>
 </div>

@@ -1,8 +1,8 @@
 <div class="container">
   <h3 class="mt-3">Welcome to your Cellr, <%= @user.name %> </h3>
 
-  <p>I will display general Cellr Information in this view.  Value, Bottle count and comment count.  Will also add quick link to add a bottle from this page.</p>
 
-  <%= link_to "Add a bottle to your Cellr", new_user_bottle_path(@user) %><br>
+
+  <%= link_to "Add a bottle to your Cellr", new_user_bottle_path(@user), class: 'btn btn-secondary' %><br>
   <%= link_to "Update Profile", edit_user_path %> or <%= link_to "Log Out", logout_path %>
 </div>
