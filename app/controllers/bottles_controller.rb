@@ -1,10 +1,14 @@
 class BottlesController < ApplicationController
   before_action :logged_in_user
-  before_action :set_bottle, only: [:show, :edit, :update]
+
 
   def index
-    @user = User.find(session[:user_id])
-    @bottles = Bottle.all
+    if params[:user_id]
+      @bottles = User.find(params[:user_id]).bottles
+      render "userindex"
+    else
+      @bottles = Bottle.all
+    end
   end
 
   def new
@@ -12,14 +16,15 @@ class BottlesController < ApplicationController
   end
 
   def show
-
+    @bottle = Bottle.find(params[:id])
   end
 
   def create
-    @bottle = Bottle.new(bottle_params)
+    @bottle = Bottle.find_or_create_by(bottle_params)
+    @bottle.bottle_prices.build
     if @bottle.save
       flash[:success] = "Bottle added to Cellr successfully"
-      redirect_to @bottle
+      redirect_to user_bottles_path(current_user.id)
     else
       render 'new'
     end
@@ -43,9 +48,6 @@ class BottlesController < ApplicationController
 
   private
 
-  def set_bottle
-    @bottle = Bottle.find(params[:id])
-  end
 
   def bottle_params
     params.require(:bottle).permit(:title, :wine_type, :grape_variety, :vintage, :winery_id)

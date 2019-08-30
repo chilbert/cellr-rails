@@ -24,7 +24,6 @@ class User < ApplicationRecord
 
 
 
-
   def total_bottle_count
     self.bottles.count
   end

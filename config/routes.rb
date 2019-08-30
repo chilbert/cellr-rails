@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
   resources :users do
-      resources :bottles
-      end
+      resources :bottles, only: [:show, :index]
+  end
 
 
-  resources :bottles, only: [:edit, :update]
+  resources :bottles, only: [:index, :show, :new, :create, :edit, :update]
   resources :wineries
 
 
