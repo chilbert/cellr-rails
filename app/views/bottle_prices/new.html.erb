@@ -1,0 +1,6 @@
+<div class="container">
+  <h2 class="mt-3">Add a price to "<%= @bottle.title %> - <%= @bottle.vintage %>"</h2>
+
+  <%= render partial: 'form', locals: {user: @user, bottle: @bottle, bottle_price: @bottle_price} %>
+
+</div>

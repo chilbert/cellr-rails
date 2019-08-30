@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
   resources :users do
-      resources :bottles, only: [:show, :index]
+      resources :bottles, only: [:show, :index] do
+        resources :bottle_prices
+      end
   end
+
 
 
   resources :bottles, only: [:index, :show, :new, :create, :edit, :update]

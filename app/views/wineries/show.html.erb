@@ -4,7 +4,9 @@
   <% @winery.bottles.each do |d| %>
   <div class="card mt-5">
     <div class="card-body">
-        <h3><%= d.title %></h3><br>
+        <h3><%= d.title %> - <%= d.vintage %></h3><br>
+        <p><%= d.grape_variety %></p>
+        <%= link_to "Add this wine to your Cellr", new_user_bottle_bottle_price_path(current_user.id, d.id), class: "btn btn-info mt-3" %><br>
       </div>
     </div>
   <% end %>

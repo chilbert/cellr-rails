@@ -5,8 +5,9 @@
         <div class="card-body">
         <h3><%= w.name %></h3>
         <%= link_to "Add a bottle from #{w.name}", new_bottle_path, class: "btn btn-secondary" %><br>
+        <%= link_to "View Wines from #{w.name}", winery_path(w.id), class: "btn btn-info mt-3" %><br>
     </div>
   </div>
   <% end %><br>
-  <%= link_to "Add a new winery", new_winery_path, class: "btn btn-primary" %>
+  <%= link_to "Add a new winery", new_winery_path, class: "btn btn-light" %>
 </div>

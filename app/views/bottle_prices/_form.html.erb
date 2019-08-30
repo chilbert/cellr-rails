@@ -1,0 +1,6 @@
+<%= bootstrap_form_for [user, bottle, bottle_price] do |f| %>
+<%= f.text_field :price %></br>
+<%= hidden_field_tag 'bottle_price[bottle_id]', params[:bottle_id] %>
+<%= hidden_field_tag 'bottle_price[user_id]', params[:user_id] %>
+<%= f.submit "Cha Ching!"%>
+<% end %>

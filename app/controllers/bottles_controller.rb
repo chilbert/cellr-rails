@@ -5,6 +5,7 @@ class BottlesController < ApplicationController
   def index
     if params[:user_id]
       @bottles = User.find(params[:user_id]).bottles
+      binding.pry
       render "userindex"
     else
       @bottles = Bottle.all
@@ -21,10 +22,9 @@ class BottlesController < ApplicationController
 
   def create
     @bottle = Bottle.find_or_create_by(bottle_params)
-    @bottle.bottle_prices.build
     if @bottle.save
       flash[:success] = "Bottle added to Cellr successfully"
-      redirect_to user_bottles_path(current_user.id)
+      redirect_to new_user_bottle_bottle_price_path(current_user.id, @bottle.id)
     else
       render 'new'
     end
