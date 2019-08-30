@@ -10,6 +10,7 @@ class BottlesController < ApplicationController
 
   def show
     @bottle = Bottle.find_by(params[:id])
+    @comment = Comment.new(bottle_id: params[:id])
   end
 
   def create

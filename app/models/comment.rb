@@ -1,9 +1,9 @@
 class Comment < ApplicationRecord
-  belongs_to :users
-  belongs_to :bottles
+  belongs_to :user
+  belongs_to :bottle
 
-  validates :name, presence: true
-  validates :description, presence: true
+  validates :title, presence: true
+  # validates :description, presence: true
 
 
 
