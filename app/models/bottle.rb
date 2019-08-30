@@ -8,4 +8,8 @@ class Bottle < ApplicationRecord
   validates :vintage, length: { is: 4 }
 
 
+  
+
+
+
 end

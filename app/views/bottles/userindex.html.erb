@@ -1,5 +1,7 @@
 <div class="container">
   <h1 class="mt-3">Your Cellr's collection of Wine by the Bottle.</h1>
+  <h4>You have <%= @bottle_price.count %> bottles of wine in your Cellr.</h4>
+  <h5>Your Cellr is worth $<%=current_user.cellr_value %>0 dollars.</h5>
   <% @bottle_price.each do |b| %>
     <div class="card mt-5">
       <div class="card-body">

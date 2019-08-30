@@ -9,6 +9,19 @@ class User < ApplicationRecord
   validates :password, length: { in: 6..20 }
 
 
+  def cellr_value
+    bottles = BottlePrice.where(user_id: self.id)
+    value = 0
+    bottles.each do |c|
+      value += c.price
+    end
+    return value
+  end
+
+  def total_wineries
+    self.bottles.distinct.count('winery_id')
+  end
+
   def self.create_with_omniauth(auth)
     user = find_or_create_by(uid: auth[:uid], provider:  auth[:provider])
     user.email = auth[:info][:email]
@@ -20,16 +33,6 @@ class User < ApplicationRecord
       user.save!
       user
     end
-  end
-
-
-
-  def total_bottle_count
-    self.bottles.count
-  end
-
-  def total_wineries
-    self.bottles.distinct.count('winery_id')
   end
 
 end
