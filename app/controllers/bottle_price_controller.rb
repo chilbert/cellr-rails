@@ -23,6 +23,6 @@ class BottlePriceController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:title, :comment, :user_id, :bottle_id)
+    params.require(:comment).permit(:title, :price, :user_id, :bottle_id)
   end
 end

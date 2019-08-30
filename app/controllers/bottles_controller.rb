@@ -1,8 +1,9 @@
 class BottlesController < ApplicationController
   before_action :logged_in_user
+  before_action :set_bottle, only: [:show, :edit, :update]
 
   def index
-      @bottles = Bottle.all
+    @bottles = Bottle.all
   end
 
   def new
@@ -10,7 +11,7 @@ class BottlesController < ApplicationController
   end
 
   def show
-    @bottle = Bottle.find_by(params[:id])
+
   end
 
   def create
@@ -40,6 +41,10 @@ class BottlesController < ApplicationController
 
 
   private
+
+  def set_bottle
+    @bottle = Bottle.find(params[:id])
+  end
 
   def bottle_params
     params.require(:bottle).permit(:title, :wine_type, :grape_variety, :vintage, :winery_id)
