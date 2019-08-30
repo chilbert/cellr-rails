@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
 
-  has_many :comments
-  has_many :bottles, through: :comments
+  has_many :bottle_prices
+  has_many :bottles, through: :bottle_prices
 
   validates :name, length: { minimum: 2 }
   validates :email, uniqueness: true
@@ -23,7 +23,7 @@ class User < ApplicationRecord
   end
 
 
-  
+
 
   def total_bottle_count
     self.bottles.count

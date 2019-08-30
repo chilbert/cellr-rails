@@ -3,6 +3,7 @@ class BottlesController < ApplicationController
   before_action :set_bottle, only: [:show, :edit, :update]
 
   def index
+    @user = User.find(session[:user_id])
     @bottles = Bottle.all
   end
 

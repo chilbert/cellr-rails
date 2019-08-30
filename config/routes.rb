@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       end
 
 
-  resources :bottles, only: [:new, :edit, :update, :create, :index, :show]
+  resources :bottles, only: [:edit, :update]
   resources :wineries
 
 
