@@ -1,6 +1,6 @@
 <div class="container">
     <h3 class="mt-3 mb-2"><%= @bottle.title %></h3>
-    <%= link_to 'Edit Wine', edit_user_bottle_path(@bottle.id), class: 'btn btn-secondary' %>
+    <%= link_to 'Edit Wine', edit_bottle_path(@bottle.id), class: 'btn btn-secondary' %>
   <div class="card mt-5">
     <div class="card-body">
     <h5>Type: <%= @bottle.wine_type %></h5>

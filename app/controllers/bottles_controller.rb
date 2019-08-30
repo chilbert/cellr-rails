@@ -17,7 +17,7 @@ class BottlesController < ApplicationController
     @bottle = Bottle.new(bottle_params)
     if @bottle.save
       flash[:success] = "Bottle added to Cellr successfully"
-      redirect_to user_bottles_path(current_user.id)
+      redirect_to @bottle
     else
       render 'new'
     end
@@ -31,7 +31,7 @@ class BottlesController < ApplicationController
     @bottle = Bottle.find(params[:id])
     if @bottle.update(bottle_params)
       flash[:success] = "Bottle updated successfully"
-      redirect_to user_bottles_path(current_user.id)
+      redirect_to @bottle
     else
       render :edit
     end
