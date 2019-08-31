@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }
 
   #route, custom controller and scope
-  scope :highest_value, -> { joins(:bottle_prices).group('user_id').order('sum(price)DESC').limit(1)}
+  scope :highest_value, -> { joins(:bottle_prices).group('users.id').order('sum(price)DESC').limit(1)}
 
   def cellr_value
     bottles = BottlePrice.where(user_id: self.id)
