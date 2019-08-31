@@ -6,8 +6,10 @@ class User < ApplicationRecord
 
   validates :name, length: { minimum: 2 }
   validates :email, uniqueness: true
-  validates :password, length: { in: 6..20 }
+  validates :password, length: { minimum: 6 }
 
+  #route, custom controller and scope
+  scope :highest_value, -> { joins(:bottle_prices).group('id').order('count(price) DESC').limit(1)}
 
   def cellr_value
     bottles = BottlePrice.where(user_id: self.id)
@@ -32,15 +34,11 @@ class User < ApplicationRecord
   end
 
   def self.create_with_omniauth(auth)
-    user = find_or_create_by(uid: auth[:uid], provider:  auth[:provider])
-    user.email = auth[:info][:email]
-    user.password = auth[:uid]
-    user.name = auth[:info][:name]
-    if User.exists?(user.id)
-      user
-    else
+    where(uid: auth[:uid], provider:  auth[:provider]).first_or_initialize.tap do |user|
+      user.email = auth[:info][:email]
+      user.name = auth[:info][:name] unless user.name != nil
+      user.password = SecureRandom.hex unless user.password != nil
       user.save!
-      user
     end
   end
 

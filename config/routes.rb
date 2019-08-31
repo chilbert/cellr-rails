@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
 
+  get '/highest_value', to: 'users#highest_value'
+
 
   root 'static#home'
   get '/signup' => 'users#new'

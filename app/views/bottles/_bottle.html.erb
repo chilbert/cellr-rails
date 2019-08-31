@@ -1,7 +1,7 @@
 <% @bottles.each do |b| %>
 <div class="card mt-5">
   <div class="card-body">
-  <h3><%= link_to b.title, user_bottle_path(current_user.id, b.id) %></h3>
+  <h3><%= link_to b.title, bottle_path(b.id) %></h3>
   <h5>Type: <%= b.wine_type %></h5>
   <p>Variety: <%= b.grape_variety %></p>
   <p>Vintage: <%= b.vintage %></p>
