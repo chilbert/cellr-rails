@@ -14,9 +14,9 @@
       <p>Price: $<%= b.price.round(2) %>0</p>
     </div>
   </div>
-  <%= link_to 'I drank this...', user_bottle_bottle_price_path(current_user.id, b.bottle.id, b.id), method: :delete, data: { confirm: 'Did you really drink this??' }%>
+  <%= link_to 'I drank this...', user_bottle_bottle_price_path(current_user.id, b.bottle.id, b.id), method: :delete, data: { confirm: 'Did you really drink this??' }%><br>
   <% end %>
 
-<%= link_to "View Wineries to Add Bottle", wineries_path, class: "btn btn-info" %>
+<%= link_to "View Wineries to Add Bottle", wineries_path, class: "btn btn-info mt-3" %>
 
 </div>
