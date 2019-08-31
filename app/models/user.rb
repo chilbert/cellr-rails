@@ -26,7 +26,11 @@ class User < ApplicationRecord
     bottles.each do |c|
       value += c.bottle.vintage
     end
+    if bottles.empty?
+      return 0
+    else
     return value/bottles.count
+  end
   end
 
   def total_wineries
