@@ -8,12 +8,12 @@ class SessionsController < ApplicationController
   if auth_params
     user = User.create_with_omniauth(auth_params)
     session[:user_id] = user.id
-    redirect_to user_path(user.id)
+    redirect_to user_bottles_path(user.id)
   else
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       log_in user
-      redirect_to user
+      redirect_to user_bottles_path(user.id)
     else
       flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
