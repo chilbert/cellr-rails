@@ -5,9 +5,7 @@ class UsersController < ApplicationController
 
   def highest_value
     @user = User.highest_value.first
-    respond_to do |format|
-      format.html { render :highest_value }
-    end
+    render :highest_value
   end
 
 
