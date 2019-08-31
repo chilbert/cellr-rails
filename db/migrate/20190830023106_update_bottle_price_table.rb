@@ -3,6 +3,6 @@ class UpdateBottlePriceTable < ActiveRecord::Migration[5.2]
     remove_column :bottle_price, :title
     remove_column :bottle_price, :comment
     remove_column :bottles, :price
-    add_column :bottle_price, :price, :numerical
+    add_column :bottle_price, :price, :numeric
   end
 end
