@@ -22,6 +22,7 @@ class WineriesController < ApplicationController
 
   def show
     @bottle = Bottle.new
+    @user_id = current_user.id
     @winery = Winery.find(params[:id])
     respond_to do |format|
       format.html { render :show }

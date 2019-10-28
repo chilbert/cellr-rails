@@ -6,7 +6,7 @@
     <h5>Type: <%= @bottle.wine_type %></h5>
     <p>Variety: <%= @bottle.grape_variety %></p>
     <p>Vintage: <%= @bottle.vintage %></p>
-    <button type="button" name="button" class="winery-show" data-id="<%=@bottle.id%>">Show Winery</button>
+    <button type="button" name="button" class="winery-show btn btn-info mt-2 mb-3" data-id="<%=@bottle.id%>">Show Winery</button>
     <div class="winery">
 
     </div>
@@ -17,6 +17,7 @@
 
 
 <script type="text/javascript">
+
   $(function () {
     $(".winery-show").on("click", function (event) {
       event.preventDefault()
@@ -24,8 +25,9 @@
       $winerybutton.html('');
       var wineryID = parseInt($(".winery-show").attr("data-id"));
       $.get("/bottles/" + wineryID + ".json", function(data) {
-          $winerybutton.append('<p>' + data["winery"].name + '</p>')
+          $winerybutton.append('<p>' + '<em>' + data["winery"].name + '</em>' + '</p>')
       });
     });
   });
+
 </script>

@@ -26,5 +26,7 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback' => 'sessions#create'
   get '/auth/failure', :to => 'static#home'
 
+  get 'current_user' => "users#cookie_user"
+
 
 end
