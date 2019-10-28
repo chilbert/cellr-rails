@@ -12,12 +12,8 @@ class WineriesController < ApplicationController
   end
 
   def create
-    @winery = Winery.new(winery_params)
-    if @winery.save
-      redirect_to wineries_path
-    else
-      render :new
-    end
+    @winery = Winery.create(winery_params)
+    render json: @winery, status: 201
   end
 
   def edit
@@ -31,7 +27,6 @@ class WineriesController < ApplicationController
       format.html { render :show }
       format.json { render json: @winery }
     end
-
   end
 
   def update

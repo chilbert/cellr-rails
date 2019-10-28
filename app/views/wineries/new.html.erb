@@ -10,4 +10,24 @@
   <%= w.text_field :name %>
   <%= w.submit "Add Winery" %>
   <% end %>
+  <div class="card mt-5">
+    <div class="card-body">
+    <h3 id="wineryName"></h3>
+  </div>
 </div>
+
+
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $('form').submit(function(event) {
+    event.preventDefault();
+    var values = $(this).serialize();
+    var posting = $.post('/wineries', values);
+    posting.done(function(data) {
+      var winery = data;
+      $("#wineryName").text(winery["name"]);
+    });
+  });
+});
+</script>
