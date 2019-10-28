@@ -17,7 +17,11 @@ class BottlesController < ApplicationController
 
   def show
     @bottle = Bottle.find(params[:id])
-  end
+      respond_to do |format|
+        format.html { render :show }
+        format.json { render json: @bottle }
+      end
+    end
 
   def create
     @bottle = Bottle.find_or_create_by(bottle_params)
